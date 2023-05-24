@@ -11,7 +11,7 @@ const inter = Sedgwick_Ave_Display({
 const Footer: FunctionComponent = () => {
 	return (
 		<footer className='relative flex flex-col w-full items-center gap-14 p-14 isolate bg-[#c1d9d033]'>
-            <Image src='/assets/images/footer.png' alt='Footer Background' fill className='absolute inset-0 -z-10' />
+            <Image src='/assets/images/footer.png' alt='Footer Background' fill className='absolute inset-0 -z-10 object-cover' />
 			<div className='grid grid-cols-[30%_repeat(2,auto)_25%] gap-2 self-stretch'>
 				<div className='flex flex-col gap-8'>
 					<div className='flex h-16 items-center gap-2'>
