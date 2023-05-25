@@ -103,8 +103,7 @@ const Header: FunctionComponent = () => {
 					))}
 				</ul>
 				<Link
-					target='_blank'
-					href='https://docs.google.com/forms/d/e/1FAIpQLSejIqWbMaTFMGrKT57RiMg6mV8C7ui89YR4z0lnafS7srfdQQ/viewform?usp=sf_link'
+					href='/connection'
 					className='bg-primary py-2 px-6 rounded-xl text-white text-center select-none'
 				>
 					Connexion
