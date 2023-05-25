@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const { fontFamily } = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -14,6 +16,7 @@ module.exports = {
       },
       colors: {
         primary: '#60B896',
+        secondary: '#E45F3B',
         text: {
           DEFAULT: 'black',
           gray: '#959595',
@@ -26,7 +29,26 @@ module.exports = {
           nav: 'white',
           landing: 'white'
         }
-      }
+      },
+      fontFamily: {
+        sans: ['var(--montserrat-variable)', ...fontFamily.sans],
+        serif: ['var(--sedgwick-variable)', ...fontFamily.serif],
+      },
+      animation: {
+        "bounce-fast": "bounce .8s infinite",
+      },
+      keyframes: {
+        bounce: {
+          "0%, 100%": {
+            transform: "translateY(-70%)",
+            animationTimingFunction: "cubic-bezier(0.8, 0, 1, 1)",
+          },
+          "50%": {
+            transform: "translateY(0)",
+            animationTimingFunction: "cubic-bezier(0, 0, 0.2, 1)",
+          },
+        },
+      },
     },
   },
   plugins: [],

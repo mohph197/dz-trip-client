@@ -6,12 +6,6 @@ import { FunctionComponent, useEffect, useRef, useState } from "react";
 import NavLink from "./Header/NavLink";
 import { navLinks } from "@/config/consts";
 import { useRouter } from "next/router";
-import { Sedgwick_Ave_Display } from "next/font/google";
-
-const inter = Sedgwick_Ave_Display({
-    weight: ["400"],
-    subsets: ["latin"],
-});
  
 const Header: FunctionComponent = () => {
     const windowSize = useWindowSize();
@@ -64,7 +58,7 @@ const Header: FunctionComponent = () => {
 			ref={headerRef}
 			className='fixed top-0 inset-x-0 h-16 md:h-20 py-4 px-[2vw] flex items-center justify-between z-50 bg-background-nav lg:bg-opacity-60 lg:backdrop-blur'
 		>
-			<div className="flex h-full items-center gap-2">
+			<Link href='/' className="flex h-full items-center gap-2">
                 <div className='relative h-full aspect-square'>
                     <Image
                         src='/assets/images/logo.svg'
@@ -73,10 +67,10 @@ const Header: FunctionComponent = () => {
                         className='object-contain'
                     />
                 </div>
-                <span className={`text-3xl ${inter.className}`}>
+                <span className='text-3xl font-serif'>
                     DZTrip
                 </span>
-            </div>
+            </Link>
 			<input
 				type='checkbox'
 				id='menu-toggle'

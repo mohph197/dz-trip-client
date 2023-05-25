@@ -1,18 +1,12 @@
 import Image from 'next/image';
 import { FunctionComponent } from 'react';
-import { Sedgwick_Ave_Display } from 'next/font/google';
 import Link from 'next/link';
-
-const inter = Sedgwick_Ave_Display({
-	weight: ['400'],
-	subsets: ['latin'],
-});
 
 const Footer: FunctionComponent = () => {
 	return (
 		<footer className='relative flex flex-col w-full items-center gap-14 p-14 isolate bg-[#c1d9d033]'>
             <Image src='/assets/images/footer.png' alt='Footer Background' fill className='absolute inset-0 -z-10 object-cover' />
-			<div className='grid grid-cols-[30%_repeat(2,auto)_25%] gap-2 self-stretch'>
+			<div className='grid grid-cols-[26%_repeat(2,auto)_25%] gap-5 self-stretch'>
 				<div className='flex flex-col gap-8'>
 					<div className='flex h-16 items-center gap-2'>
 						<div className='relative h-full aspect-square'>
@@ -23,7 +17,7 @@ const Footer: FunctionComponent = () => {
 								className='object-contain'
 							/>
 						</div>
-						<span className={`text-4xl ${inter.className}`}>DZTrip</span>
+						<span className='text-4xl font-serif'>DZTrip</span>
 					</div>
 					<p className='text-text-gray'>
 						Le site officiel du ministère du tourisme algérie pour promouvoire
