@@ -4,11 +4,11 @@ import Link from 'next/link';
 
 const Footer: FunctionComponent = () => {
 	return (
-		<footer className='relative flex flex-col w-full items-center gap-14 p-14 isolate bg-[#c1d9d033]'>
+		<footer className='relative flex flex-col w-full items-center gap-14 px-4 sm:px-10 py-14 isolate bg-[#c1d9d033] mt-20 md:mt-24'>
             <Image src='/assets/images/footer.png' alt='Footer Background' fill className='absolute inset-0 -z-10 object-cover' />
-			<div className='grid grid-cols-[26%_repeat(2,auto)_25%] gap-5 self-stretch'>
+			<div className='grid grid-cols-1 justify-items-center text-center sm:text-start sm:justify-items-stretch sm:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-5 self-stretch'>
 				<div className='flex flex-col gap-8'>
-					<div className='flex h-16 items-center gap-2'>
+					<div className='flex h-16 justify-center sm:justify-start items-center gap-2'>
 						<div className='relative h-full aspect-square'>
 							<Image
 								src='/assets/images/logo.svg'
@@ -42,7 +42,7 @@ const Footer: FunctionComponent = () => {
 					</ul>
 				</div>
 				<div className='flex flex-col gap-5'>
-					<h4 className='font-bold text-text-blackGray'>Centre d&lsquo;aide</h4>
+					<h4 className='font-bold text-text-blackGray'>Centre d&apos;aide</h4>
 					<ul className='flex flex-col gap-2'>
 						<li className='text-text-blackGray'>
 							<Link href=''>Tourist visa</Link>
@@ -64,20 +64,20 @@ const Footer: FunctionComponent = () => {
 					</h4>
 					<ul className='flex flex-col gap-5'>
 						<div className='flex flex-col gap-1'>
-							<li className='text-text-blackGray flex items-center'>
-								<i className='fa-solid fa-phone px-3'></i>
+							<li className='text-text-blackGray flex justify-center sm:justify-start items-center gap-3 sm:pl-3'>
+								<i className='fa-solid fa-phone'></i>
 								<span>+213 23 23 23 23</span>
 							</li>
-							<li className='text-text-blackGray flex items-center'>
-								<i className='fa-solid fa-at px-3'></i>
+							<li className='text-text-blackGray flex justify-center sm:justify-start items-center gap-3 sm:pl-3'>
+								<i className='fa-solid fa-at'></i>
 								<span>contact@bytewise.dz</span>
 							</li>
-							<li className='text-text-blackGray flex items-center'>
-								<i className='fa-solid fa-location-dot px-3'></i>
+							<li className='text-text-blackGray flex justify-center sm:justify-start items-center gap-3 sm:pl-3'>
+								<i className='fa-solid fa-location-dot'></i>
 								<span>119 rue Didouche Mourad, Algiers</span>
 							</li>
 						</div>
-						<li className='text-text-blackGray flex gap-5 items-center'>
+						<li className='text-text-blackGray flex gap-5 items-center justify-center sm:justify-start'>
 							<Link href=''>
 								<i className='fa-brands fa-square-facebook fa-xl'></i>
 							</Link>
@@ -94,17 +94,17 @@ const Footer: FunctionComponent = () => {
 					</ul>
 				</div>
 			</div>
-            <div className="flex flex-col gap-4 items-center w-1/3">
+            <div className="flex flex-col gap-4 items-center w-[min(28rem,100%)]">
                 <h6 className='font-bold text-text-red'>Rejoindre DZ Trip</h6>
                 <h4 className='font-semibold text-text-blackBlue text-4xl'>Se connecter</h4>
                 <form className="relative self-stretch" method='post'>
                     <input type="email" name="contact-email" id="contact-email" placeholder='Votre adresse email' className='px-4 py-3 rounded-2xl bg-white border border-[#E6E6E6] outline-none w-full text-sm placeholder:font-normal' />
-                    <button className='absolute right-0 inset-y-0 px-3 rounded-2xl text-sm font-semibold bg-primary text-white'>Se connecter</button>
+                    <button className='absolute right-0 inset-y-0 px-3 rounded-2xl text-xs sm:text-sm font-semibold bg-primary text-white'>Se connecter</button>
                 </form>
             </div>
-            <div className="flex flex-col items-center gap-5 w-1/4">
+            <div className="flex flex-col items-center gap-5 w-[min(350px,80vw)]">
                 <hr className='border-text-gray border self-stretch' />
-                <small className='text-base font-semibold text-text-blackGray'>© 2023 ByteWise | All rights raserved</small>
+                <small className='text-base font-semibold text-text-blackGray text-center w-[90%]'>© 2023 ByteWise | All rights raserved</small>
             </div>
 		</footer>
 	);

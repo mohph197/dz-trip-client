@@ -2,19 +2,15 @@ export const seo = {
 	title: 'DZ Trip',
 };
 
-export const navLinks: {
-	name: string;
-	url: string;
-	id: string;
-}[] = [
+export const navLinks = [
 	{
-		name: 'A propos',
+		name: 'À propos',
 		id: 'about',
 		url: '/#about',
 	},
 	{
 		name: 'Aide',
-        id: 'help',
+		id: 'help',
 		url: '/help',
 	},
 	{
@@ -26,5 +22,28 @@ export const navLinks: {
 		name: 'FAQ',
 		id: 'faq',
 		url: '/#faq',
+	},
+];
+
+export const faq = [
+	{
+		question: 'comment ajouter des photos?',
+		answer:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam ea consequuntur facilis ad nihil commodi quisquam aliquid enim, quia voluptate!',
+	},
+	{
+		question: 'comment ajouter des photos?',
+		answer:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam ea consequuntur facilis ad nihil commodi quisquam aliquid enim, quia voluptate!',
+	},
+	{
+		question: 'comment ajouter des photos?',
+		answer:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam ea consequuntur facilis ad nihil commodi quisquam aliquid enim, quia voluptate!',
+	},
+	{
+		question: 'comment ajouter des photos?',
+		answer:
+			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam ea consequuntur facilis ad nihil commodi quisquam aliquid enim, quia voluptate!',
 	},
 ];

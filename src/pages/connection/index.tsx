@@ -1,8 +1,8 @@
 import PageSection from "@/components/shared/PageSection";
+import { NextPage } from "next";
 import Image from "next/image";
-import { FunctionComponent } from "react";
 
-const Connection: FunctionComponent = () => {
+const Connection: NextPage = () => {
     return (
         <PageSection name="connection" className="h-[max(100vh,24rem)]">
             <div className="relative h-full w-full flex flex-col justify-center items-center isolate">

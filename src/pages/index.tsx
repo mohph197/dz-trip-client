@@ -1,12 +1,18 @@
-import PageSection from '@/components/shared/PageSection';
+import AboutSection from '@/sections/Home/AboutSection';
+import FAQSection from '@/sections/Home/FAQSection';
 import HeroSection from '@/sections/Home/HeroSection';
-import Image from 'next/image';
-import Link from 'next/link';
+import ServicesSection from '@/sections/Home/ServicesSection';
+import { NextPage } from 'next';
 
-export default function Home() {
+const Home: NextPage = () => {
 	return (
 		<>
 			<HeroSection />
+			<ServicesSection />
+			<AboutSection />
+			<FAQSection />
 		</>
 	);
 }
+
+export default Home;
