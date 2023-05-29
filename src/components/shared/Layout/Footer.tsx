@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 const Footer: FunctionComponent = () => {
 	return (
-		<footer className='relative flex flex-col w-full items-center gap-14 px-4 sm:px-10 py-14 isolate bg-[#c1d9d033] mt-20 md:mt-24'>
+		<footer className='relative flex flex-col w-full items-center gap-14 px-4 sm:px-10 py-14 isolate bg-[#c1d9d033]'>
             <Image src='/assets/images/footer.png' alt='Footer Background' fill className='absolute inset-0 -z-10 object-cover' />
 			<div className='grid grid-cols-1 justify-items-center text-center sm:text-start sm:justify-items-stretch sm:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-5 self-stretch'>
 				<div className='flex flex-col gap-8'>

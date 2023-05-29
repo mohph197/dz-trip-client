@@ -47,3 +47,33 @@ export const faq = [
 			'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam ea consequuntur facilis ad nihil commodi quisquam aliquid enim, quia voluptate!',
 	},
 ];
+
+export const operationsNavLinks = [
+	{
+		name: 'Carte',
+		id: 'map',
+		url: '/main',
+	},
+	{
+		name: 'Explore',
+		id: 'explore',
+		url: '/main/explore',
+	},
+	{
+		name: 'Régions',
+		id: 'regions',
+		url: '/main/regions',
+	},
+	{
+		name: 'Evènements',
+		id: 'events',
+		url: '/main/events',
+	},
+]
+
+export const searchCategories = [
+	'This is',
+	'A Test',
+	'Nothing',
+	'Serious'
+]

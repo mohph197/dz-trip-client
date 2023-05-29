@@ -40,7 +40,7 @@ const HeroSection: FunctionComponent = () => {
 					</p>
 					<div className='flex flex-col sm:flex-row gap-4 sm:gap-0 justify-around items-center'>
 						<Link
-							href=''
+							href='/main'
 							className='bg-secondary py-2 w-4/5 sm:w-2/5 rounded-xl text-white font-semibold text-center select-none'
 						>
 							Allons y !

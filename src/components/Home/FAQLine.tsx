@@ -23,7 +23,7 @@ const FAQLine: FunctionComponent<FAQLineProps> = ({
 	};
 
 	useEffect(() => {
-        console.log('Im triggered');
+		console.log('Im triggered');
 		animate(
 			scope.current,
 			{
@@ -34,6 +34,8 @@ const FAQLine: FunctionComponent<FAQLineProps> = ({
 			},
 			{ duration: 0.3, type: 'spring' }
 		).then(() => scope.current.removeAttribute('style'));
+
+		if (isExpanded) animate('p, hr', { opacity: [0, 1] }, { duration: 0.3 });
 	}, [isExpanded, scope, animate, oldHeight]);
 
 	return (
