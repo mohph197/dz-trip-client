@@ -6,7 +6,11 @@ import {
 	useState,
 } from 'react';
 import PageSection from './PageSection';
-import { operationsNavLinks, searchCategories } from '@/config/consts';
+import {
+	operationsNavLinks,
+	searchCategories,
+	searchRoutes,
+} from '@/config/consts';
 import OperationLink from './OperationsLayout/OperationLink';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -29,6 +33,7 @@ const OperationsLayout: FunctionComponent<OperationsLayoutProps> = ({
 	const [searchBoxFocused, setSearchBoxFocused] = useState<boolean>(false);
 	const [categorySelectExpanded, setCategorySelectExpanded] =
 		useState<boolean>(false);
+	const [showSearch, setShowSearch] = useState<boolean>(false);
 
 	const focusEelement = () => {
 		setSearchBoxFocused(true);
@@ -49,6 +54,10 @@ const OperationsLayout: FunctionComponent<OperationsLayoutProps> = ({
 		};
 	}, []);
 
+	useEffect(() => {
+		setShowSearch(searchRoutes.includes(router.route));
+	}, [router.route]);
+
 	return (
 		<PageSection
 			name={pageName}
@@ -67,36 +76,36 @@ const OperationsLayout: FunctionComponent<OperationsLayoutProps> = ({
 						))}
 					</div>
 				</div>
-				<div className='flex gap-8 px-4 justify-center'>
-					<div
-						className={`flex gap-2 py-1 px-2 w-80 bg-white rounded-xl overflow-hidden border ${
-							searchBoxFocused ? 'border-primary' : ''
-						}`}
-					>
-						<div className='relative h-full aspect-square'>
-							<Image
-								src='/assets/images/search.svg'
-								alt='Search Icon'
-								fill
-								className='object-contain'
+				{showSearch && (
+					<div className='flex gap-8 px-4 justify-center'>
+						<div
+							className={`flex gap-2 py-1 px-2 w-80 bg-white rounded-xl overflow-hidden border ${
+								searchBoxFocused ? 'border-primary' : ''
+							}`}
+						>
+							<div className='relative h-full aspect-square'>
+								<Image
+									src='/assets/images/search.svg'
+									alt='Search Icon'
+									fill
+									className='object-contain'
+								/>
+							</div>
+							<input
+								type='text'
+								name=''
+								id=''
+								ref={searchBoxRef}
+								placeholder='ville, monument...'
+								className='bg-transparent outline-none w-full text-sm'
 							/>
 						</div>
-						<input
-							type='text'
-							name=''
-							id=''
-							ref={searchBoxRef}
-							placeholder='ville, monument...'
-							className='bg-transparent outline-none w-full text-sm'
-						/>
+						<DropDown title='Catégorie' items={searchCategories} />
+						<DropDown title='Thème' items={searchCategories} />
 					</div>
-					<DropDown title='Catégorie' items={searchCategories} />
-					<DropDown title='Thème' items={searchCategories} />
-				</div>
+				)}
 			</header>
-			<div className='relative w-full flex-1'>
-				{children}
-			</div>
+			<div className='relative w-full flex-1'>{children}</div>
 		</PageSection>
 	);
 };

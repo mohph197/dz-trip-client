@@ -77,3 +77,7 @@ export const searchCategories = [
 	'Nothing',
 	'Serious'
 ]
+
+export const footerRoutes = [];
+
+export const searchRoutes = ['/main', '/explore'];
