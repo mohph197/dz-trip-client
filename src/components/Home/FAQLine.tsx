@@ -23,7 +23,6 @@ const FAQLine: FunctionComponent<FAQLineProps> = ({
 	};
 
 	useEffect(() => {
-		console.log('Im triggered');
 		animate(
 			scope.current,
 			{

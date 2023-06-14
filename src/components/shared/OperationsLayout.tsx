@@ -55,7 +55,7 @@ const OperationsLayout: FunctionComponent<OperationsLayoutProps> = ({
 			className={`items-stretch bg-[#F5F5F5] min-h-screen ${className ?? ''}`}
 			paddingTop='pt-16 md:pt-20'
 		>
-			<header className='flex flex-col items-stretch gap-5 py-5'>
+			<header className='flex flex-col items-stretch gap-4 py-4'>
 				<div className='max-w-full overflow-x-scroll sm:overflow-auto'>
 					<div className='min-w-full w-max flex justify-center gap-28 px-28'>
 						{operationsNavLinks.map((link) => (
@@ -69,7 +69,7 @@ const OperationsLayout: FunctionComponent<OperationsLayoutProps> = ({
 				</div>
 				<div className='flex gap-8 px-4 justify-center'>
 					<div
-						className={`flex gap-2 py-1 px-2 w-[380px] bg-white rounded-xl overflow-hidden border ${
+						className={`flex gap-2 py-1 px-2 w-80 bg-white rounded-xl overflow-hidden border ${
 							searchBoxFocused ? 'border-primary' : ''
 						}`}
 					>
@@ -87,13 +87,16 @@ const OperationsLayout: FunctionComponent<OperationsLayoutProps> = ({
 							id=''
 							ref={searchBoxRef}
 							placeholder='ville, monument...'
-							className='py-2 bg-transparent outline-none w-full'
+							className='bg-transparent outline-none w-full text-sm'
 						/>
 					</div>
 					<DropDown title='Catégorie' items={searchCategories} />
 					<DropDown title='Thème' items={searchCategories} />
 				</div>
 			</header>
+			<div className='relative w-full flex-1'>
+				{children}
+			</div>
 		</PageSection>
 	);
 };

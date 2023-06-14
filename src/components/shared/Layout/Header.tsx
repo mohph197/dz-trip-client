@@ -80,7 +80,7 @@ const Header: FunctionComponent = () => {
 				ref={menuToggleRef}
 			/>
 			<label
-				className='relative flex flex-col justify-between w-8 gap-2 lg:hidden z-20 group mx-5'
+				className='relative flex flex-col justify-between w-8 gap-2 lg:hidden z-20 group mx-5 hover:cursor-pointer'
 				htmlFor='menu-toggle'
 			>
 				<span className='bg-text-gray h-[4px] w-full rounded-md transition-transform origin-center group-[.peer:checked_+_&]:rotate-45 group-[.peer:checked_+_&]:absolute'></span>
