@@ -45,8 +45,8 @@ const ServicesSection: FunctionComponent = () => {
 						/>
 					)}
 					<p className='px-8 text-lg text-center md:text-start'>
-						Trouvez sur une carte interactive les lieux touristique en algérie ,
-						chercher filtrer et explorer le patrimoine algérien
+						Trouvez sur une carte intéractive les lieux touristique en Algérie.
+						Cherchez, filtrez et explorez le patrimoine algérien.
 					</p>
 				</div>
 			</div>
@@ -76,8 +76,8 @@ const ServicesSection: FunctionComponent = () => {
 						/>
 					)}
 					<p className='px-8 text-lg text-center md:text-start'>
-						Trouvez sur une carte interactive les lieux touristique en algérie ,
-						chercher filtrer et explorer le patrimoine algérien
+						Trouvez sur une carte intéractive les lieux touristique en algérie.
+						Cherchez, filtrez et explorez le patrimoine algérien
 					</p>
 				</div>
 			</div>
@@ -104,7 +104,7 @@ const ServicesSection: FunctionComponent = () => {
 						href=''
 						className='text-lg md:text-base lg:text-lg py-2 px-10 bg-accent text-white rounded-xl'
 					>
-						télécharger
+						Télécharger
 					</Link>
 				</div>
 				<div className='flex flex-col items-start gap-10 md:w-1/2'>
@@ -115,8 +115,8 @@ const ServicesSection: FunctionComponent = () => {
 						/>
 					)}
 					<p className='px-8 text-base md:text-lg text-center md:text-start'>
-						C&apos;est plus efficace avec vos smartphone ! télécharger DZ Trip
-						mooile est decouvrez l&apos;algérie
+						C&apos;est plus efficace avec vos smartphone ! Téléchargez DZ Trip
+						mobile et découvrez l&apos;algérie
 					</p>
 				</div>
 			</div>
