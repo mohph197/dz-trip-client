@@ -57,17 +57,17 @@ export const operationsNavLinks = [
 	{
 		name: 'Explore',
 		id: 'explore',
-		url: '/main/explore',
+		url: '/explore',
 	},
 	{
 		name: 'Régions',
 		id: 'regions',
-		url: '/main/regions',
+		url: '/regions',
 	},
 	{
 		name: 'Evènements',
 		id: 'events',
-		url: '/main/events',
+		url: '/events',
 	},
 ]
 
