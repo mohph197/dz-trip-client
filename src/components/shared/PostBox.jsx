@@ -4,7 +4,7 @@ const PostBox = () => {
 
     return (
         // overflow-hidden: so that nothing can get out of the defined radius
-        <div className="relative flex flex-col gap-2 w-72 h-96 rounded-2xl bg-white shadow-md overflow-hidden" >
+        <div className="relative flex flex-col gap-2 w-64 h-[350px] rounded-2xl bg-white shadow-md overflow-hidden" >
             <div className="relative w-full aspect-square isolate">
                 <Image 
                     src="/assets/images/event2.png" 
@@ -24,7 +24,9 @@ const PostBox = () => {
                     />
                 </div>
             </div>
-            <p className="px-5 text-lg text-text-gray overflow-hidden overflow-ellipsis whitespace-nowrap" > A long description that needs to be limited with ellipsis if it exceeds the width of the container</p>
+            <p className="px-5 text-lg text-text-gray overflow-hidden overflow-ellipsis whitespace-nowrap" > 
+                A long description that needs to be limited with ellipsis if it exceeds the width of the container
+            </p>
         </div>
     )
 }  
