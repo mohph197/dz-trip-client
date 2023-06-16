@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useOutClickHandler } from '@/hooks/OutClickHandler';
 
 type DropDownProps = {
 	title: string;
@@ -11,17 +12,21 @@ type DropDownProps = {
 const DropDown: FunctionComponent<DropDownProps> = ({ title, items }) => {
 	const [categorySelectExpanded, setCategorySelectExpanded] =
 		useState<boolean>(false);
+	const dropDownRef = useRef<HTMLDivElement>(null);
+	const clickOutDropDown = useOutClickHandler(
+		dropDownRef,
+		categorySelectExpanded
+	);
+
+	useEffect(() => {
+		if (clickOutDropDown) setCategorySelectExpanded(false);
+	}, [clickOutDropDown]);
 
 	return (
 		<div
-			className={`relative isolate ${categorySelectExpanded ? 'z-10' : ''}`}
+			className={`relative ${categorySelectExpanded ? 'z-10' : ''}`}
+			ref={dropDownRef}
 		>
-			{categorySelectExpanded && (
-				<div
-					className='fixed inset-0 -z-10'
-					onClick={() => setCategorySelectExpanded(false)}
-				></div>
-			)}
 			<button
 				className={`relative flex items-center py-2 px-4 h-full w-48 bg-white rounded-xl overflow-hidden border ${
 					categorySelectExpanded ? 'border-primary' : ''

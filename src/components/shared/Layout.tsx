@@ -3,6 +3,7 @@ import Header from './Layout/Header';
 import Footer from './Layout/Footer';
 import { Montserrat, Sedgwick_Ave_Display } from 'next/font/google';
 import { useRouter } from 'next/router';
+import LocationModalWrapper from '../Main/Locations/LocationModalWrapper';
 
 const montserrat = Montserrat({
 	weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -33,6 +34,7 @@ const Layout: FunctionComponent<LayoutProps> = ({ children }) => {
 			<Header />
 			{children}
 			{showFooter && <Footer />}
+			<LocationModalWrapper />
 		</div>
 	);
 };
