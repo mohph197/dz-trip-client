@@ -20,19 +20,19 @@ import DropDown from './DropDown';
 type OperationsLayoutProps = {
 	children: ReactNode;
 	pageName: string;
+	externalElement?: ReactNode;
 	className?: string;
 };
 
 const OperationsLayout: FunctionComponent<OperationsLayoutProps> = ({
 	children,
 	pageName,
+	externalElement,
 	className,
 }) => {
 	const router = useRouter();
 	const searchBoxRef = useRef<HTMLInputElement>(null);
 	const [searchBoxFocused, setSearchBoxFocused] = useState<boolean>(false);
-	const [categorySelectExpanded, setCategorySelectExpanded] =
-		useState<boolean>(false);
 	const [showSearch, setShowSearch] = useState<boolean>(false);
 
 	const focusEelement = () => {
@@ -64,7 +64,7 @@ const OperationsLayout: FunctionComponent<OperationsLayoutProps> = ({
 			className={`items-stretch bg-[#F5F5F5] min-h-screen ${className ?? ''}`}
 			paddingTop='pt-16 md:pt-20'
 		>
-			<header className='flex flex-col items-stretch gap-4 py-4'>
+			<header className='flex flex-col items-stretch gap-4 py-4 z-10 shadow-md'>
 				<div className='max-w-full overflow-x-scroll sm:overflow-auto'>
 					<div className='min-w-full w-max flex justify-center gap-28 px-28'>
 						{operationsNavLinks.map((link) => (
@@ -106,6 +106,7 @@ const OperationsLayout: FunctionComponent<OperationsLayoutProps> = ({
 				)}
 			</header>
 			<div className='relative w-full flex-1'>{children}</div>
+			{externalElement}
 		</PageSection>
 	);
 };
