@@ -63,9 +63,7 @@ const OperationsLayout: FunctionComponent<OperationsLayoutProps> = ({
 	return (
 		<PageSection
 			name={pageName}
-			className={`items-stretch bg-[#F5F5F5] min-h-screen isolate ${
-				className ?? ''
-			}`}
+			className={`items-stretch bg-[#F5F5F5] min-h-screen ${className ?? ''}`}
 			paddingTop='pt-16 md:pt-20'
 		>
 			<header className='flex flex-col items-stretch gap-4 py-4 z-10 shadow-md'>
