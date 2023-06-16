@@ -81,3 +81,9 @@ export const searchCategories = [
 export const footerRoutes = [];
 
 export const searchRoutes = ['/main', '/explore'];
+export const wilayas = [
+	'Alger',
+	'Tizi Ouzou',
+	'Oran',
+	'Blida'
+]
