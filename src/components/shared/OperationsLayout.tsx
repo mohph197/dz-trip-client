@@ -33,8 +33,6 @@ const OperationsLayout: FunctionComponent<OperationsLayoutProps> = ({
 	const router = useRouter();
 	const searchBoxRef = useRef<HTMLInputElement>(null);
 	const [searchBoxFocused, setSearchBoxFocused] = useState<boolean>(false);
-	const [categorySelectExpanded, setCategorySelectExpanded] =
-		useState<boolean>(false);
 	const [showSearch, setShowSearch] = useState<boolean>(false);
 
 	const focusEelement = () => {
