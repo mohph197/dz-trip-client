@@ -67,9 +67,6 @@ export const AuthProvider: FunctionComponent<AuthContextProviderProps> = ({
 				setAuthLoading(false);
 			}
 			user = await getUserByToken();
-			await new Promise((resolve) => {
-				setTimeout(() => resolve(''), 5000);
-			});
 			if (user) {
 				updateCurrentUser(user);
 			} else {
