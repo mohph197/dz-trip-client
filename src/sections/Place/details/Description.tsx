@@ -18,7 +18,7 @@ const PlaceDescription: FunctionComponent = () => {
     lon:number;
    
 };
-  const [lieu, setLieu] = useState<Lieu>();
+  const [lieu, setLieu] = useState<any>({});
   const[lat,setLat]=useState(0);
   const[long,setLong]=useState(0);
   const[type,setType]=useState("Type");
@@ -29,13 +29,14 @@ const PlaceDescription: FunctionComponent = () => {
     axios.get(`/lieux/${idLieu}`).then((res:any) => {
       setLieu(res.data);
       console.log(res.data);
+      
     });
   };
 
   // get lieuc 
   useEffect(() => {
     getLieu();
-  },);
+  },[]);
 
   function chargerMap() {
     const iFrameData = document.getElementById("map") as HTMLIFrameElement;
@@ -52,7 +53,11 @@ const PlaceDescription: FunctionComponent = () => {
 
   // charger la localisation du lieu
   useEffect(() => {
+    if(lieu!=null){
+    setLat(lieu.locationId.split('_')[0] );
+    setLong(lieu.locationId.split('_')[1] );
     chargerMap();
+    }
   },[lieu]);
 
    // recuperer les photos du Lieu
