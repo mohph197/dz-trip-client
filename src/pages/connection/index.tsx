@@ -2,8 +2,20 @@ import PageSection from '@/components/shared/PageSection';
 import { NextPage } from 'next';
 import Image from 'next/image';
 import BackgroundImage from '@/assets/images/connection.png';
+// import GoogleButton from '@/components/Connection/GoogleButton';
+import { useEffect } from 'react';
+import dynamic from 'next/dynamic';
+
+const GoogleButton = dynamic(
+	() => import('@/components/Connection/GoogleButton'),
+	{
+		ssr: false,
+	}
+);
 
 const Connection: NextPage = () => {
+	useEffect(() => console.log('Access to connection'), []);
+
 	return (
 		<PageSection name='connection' className='h-[max(100vh,24rem)]'>
 			<div className='relative h-full w-full flex flex-col justify-center items-center isolate'>
@@ -37,9 +49,7 @@ const Connection: NextPage = () => {
 							/>
 						</div>
 					</div>
-					<button className='px-6 py-3 rounded-xl bg-white bg-opacity-50'>
-						Google
-					</button>
+					<GoogleButton />
 				</article>
 			</div>
 		</PageSection>

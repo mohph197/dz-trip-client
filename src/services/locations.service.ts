@@ -20,7 +20,9 @@ type BoundsType = {
 	endLng: number;
 };
 
-export const getLocations = (bounds: BoundsType): FullLocationType[] => {
+export const getLocations = async (
+	bounds: BoundsType
+): Promise<FullLocationType[]> => {
 	// TODO: replace with real request using bounds
 
 	return [

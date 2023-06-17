@@ -23,16 +23,19 @@ const FAQLine: FunctionComponent<FAQLineProps> = ({
 	};
 
 	useEffect(() => {
-		animate(
-			scope.current,
-			{
-				height: [
-					`${oldHeight}px`,
-					`${scope.current.getBoundingClientRect().height}px`,
-				],
-			},
-			{ duration: 0.3, type: 'spring' }
-		).then(() => scope.current.removeAttribute('style'));
+		if (scope.current)
+			animate(
+				scope.current,
+				{
+					height: [
+						`${oldHeight}px`,
+						`${scope.current.getBoundingClientRect().height}px`,
+					],
+				},
+				{ duration: 0.3, type: 'spring' }
+			).then(() => {
+				if (scope.current) scope.current.removeAttribute('style');
+			});
 
 		if (isExpanded) animate('p, hr', { opacity: [0, 1] }, { duration: 0.3 });
 	}, [isExpanded, scope, animate, oldHeight]);
