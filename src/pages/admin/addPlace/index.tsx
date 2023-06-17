@@ -7,11 +7,26 @@ import Photos from "@/sections/EventDetails/Photos";
 import Description from "@/sections/EventDetails/Description";
 import DropDown from "@/components/shared/DropDown";
 import { wilayas } from "@/config/consts";
+import LeafletMap from "@/components/shared/map";
+
+
 //import Map from "@/components/shared/map";
 
 const AddPlace: NextPage = () => {
   return (
     <PageSection name="connection" className="h-[max(150vh,24rem)]">
+      <div className="flex flex-row gap-14 w-full h-16 justify-end  px-4 pb-4">
+        <p className="font-montserrat font-normal text-xl leading-6 text-gray-800 text-center pt-2.5">
+          User Name
+        </p>
+        <Image
+          src="/assets/images/setting.png"
+          alt=""
+          height={40}
+          width={40}
+          className="object-cover"
+        />
+      </div>
       <div className="relative h-full w-full flex flex-row gap-4 py-4 px-20 justify-center items-center isolate">
         <Image
           src={BackgroundImage}
@@ -98,7 +113,8 @@ const AddPlace: NextPage = () => {
               Spécifier l’endroit sur la carte
             </h3>
             <div className="w-full h-full flex justify-center items-center">
-            <DropDown title='Wilaya' items={wilayas} />
+              <LeafletMap/>
+              <DropDown title="Wilaya" items={wilayas} />
             </div>
           </div>
           <button className="w-[150px] h-[43px] relative overflow-hidden rounded-[10px] bg-[#833b8f] text-white text-lg hover:bg-[#5a2563]">
