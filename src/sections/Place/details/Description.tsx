@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 import { useEffect,useState} from "react";
+import axios from '@/config/axios';
 
 const PlaceDescription: FunctionComponent = () => {
 // declaration des structures 
@@ -20,10 +21,21 @@ const PlaceDescription: FunctionComponent = () => {
   const [lieu, setLieu] = useState<Lieu>();
   const[lat,setLat]=useState(0);
   const[long,setLong]=useState(0);
-  const[type,setType]=useState();
-  
-  const[ouvert,setOuvert]=useState();
-  let [idLieu ,setIdLieu]=useState<number>();
+  const[type,setType]=useState("Type");
+  const[ouvert,setOuvert]=useState(false)
+  let [idLieu ,setIdLieu]=useState<number>(1);
+
+  function getLieu(){
+    axios.get(`/lieux/${idLieu}`).then((res:any) => {
+      setLieu(res.data);
+      console.log(res.data);
+    });
+  };
+
+  // get lieuc 
+  useEffect(() => {
+    getLieu();
+  },);
 
   function chargerMap() {
     const iFrameData = document.getElementById("map") as HTMLIFrameElement;
@@ -46,10 +58,9 @@ const PlaceDescription: FunctionComponent = () => {
    // recuperer les photos du Lieu
    const [photos, setPhotos] = useState([]);
    function getPhotos(idLieu:number) {
-    //  API.get(`/photos/${idLieu}`).then((res:any) => {
-    //    console.log(res.data);
-    //    setPhotos(res.data);
-    //  });
+     axios.get(`/photos/${idLieu}`).then((res:any) => {
+      
+     });
    };
 
      // recupere les chemps ( clés etrangères ) externe en texte
