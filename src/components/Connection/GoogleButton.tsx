@@ -18,11 +18,14 @@ const GoogleButton: FunctionComponent = () => {
 				if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
 					console.log("Onetap prompt isn't displayed!");
 					console.log(notification.getMomentType());
-					google.accounts.id.renderButton(signInButtonRef.current, {
-						text: 'continue_with',
-						shape: 'pill',
-						size: 'large',
-					});
+					if (signInButtonRef)
+						google.accounts.id.renderButton(signInButtonRef.current, {
+							text: 'continue_with',
+							shape: 'pill',
+							size: 'large',
+						});
+				} else {
+					console.log('Onetap prompt is displayed!');
 				}
 			});
 		} catch (e) {
