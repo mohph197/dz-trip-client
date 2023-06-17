@@ -4,24 +4,13 @@ import { postCredentials } from './auth.service';
 
 const userKey = '@user';
 
-export const getUserByToken = async () => {
+export const getUserByToken = async (): Promise<UserType | null> => {
 	const token = getAccessToken();
 	if (!token) return null;
 	try {
 		console.log('Launching backend request!');
-		// const res = await postCredentials(token);
-		// const user = res.data.user;
-		const user = await new Promise<UserType>((resolve) => {
-			setTimeout(
-				() =>
-					resolve({
-						email: 'mohtiri718@gmail.com',
-						name: 'mohammed',
-					}),
-				2000
-			);
-		});
-		console.log('Backend request done!');
+		const res = await postCredentials(token);
+		const user = res.data;
 		return user;
 	} catch (e) {
 		console.log(e);
@@ -29,7 +18,7 @@ export const getUserByToken = async () => {
 	}
 };
 
-export const getUserInfo = () => {
+export const getUserInfo = (): UserType | null => {
 	const userJson = localStorage.getItem(userKey);
 	if (userJson) {
 		return JSON.parse(userJson);

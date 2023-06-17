@@ -27,8 +27,11 @@ type AuthContextType = {
 };
 
 export type UserType = {
-	name: string;
 	email: string;
+	name: string;
+	picture: string;
+	firstName: string;
+	lastName: string;
 };
 
 export const AuthContext = createContext<AuthContextType>({
@@ -61,7 +64,7 @@ export const AuthProvider: FunctionComponent<AuthContextProviderProps> = ({
 
 		const handleAuth = async () => {
 			setAuthLoading(true);
-			let user = getUserInfo();
+			let user: UserType | null = getUserInfo();
 			if (user) {
 				setCurrentUser(user);
 				setAuthLoading(false);
