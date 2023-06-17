@@ -5,7 +5,7 @@ import BackgroundImage from "@/assets/images/connection.png";
 import OperationsLayout from "@/components/shared/OperationsLayout";
 import Photos from "@/sections/EventDetails/Photos";
 import Description from "@/sections/EventDetails/Description";
-import DropD from "@/components/shared/DropD";
+
 import { moyensDeTransport, wilayas } from "@/config/consts";
 import LeafletMap from "@/components/shared/map";
 import Link from "next/link";
@@ -98,7 +98,7 @@ const AddPlace: NextPage = () => {
               />
             </div>
             
-<DropD title="Moyens de transport" items={moyensDeTransport}></DropD>
+<DropDown title="Moyens de transport" items={moyensDeTransport}></DropDown>
           {/*} <div className="flex  gap-6 pt-2">
               <button className="w-[147px] h-[35px] relative overflow-hidden rounded-[10px] bg-[#60b896] text-white hover:bg-[#57a484]">
                 Train
@@ -127,7 +127,7 @@ const AddPlace: NextPage = () => {
               <div className="relative w-full h-full flex  justify-end">
                 <MainMap className="h-96 w-96" />
                 <div className="absolute  z-10 pt-5 pr-4 ">
-                  <DropD title="Wilaya" items={wilayas} />
+                  <DropDown title="Wilaya" items={wilayas} />
                 </div>
               </div>
             </div>
