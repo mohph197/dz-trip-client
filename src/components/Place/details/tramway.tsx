@@ -32,6 +32,7 @@ const Tramway: FunctionComponent = ({  }) => {
             <p className="absolute left-[22.07px] top-[334.39px] text-[17.986486434936523px] font-medium text-left text-[#959595]">
               De Alger à la c’est une descritpion
             </p>
+            
           </div>
   );
 };

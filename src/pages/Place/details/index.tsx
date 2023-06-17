@@ -8,6 +8,7 @@ import PlaceTransport from '@/sections/Place/details/Transport';
 import PlaceActivities from '@/sections/Place/details/Activities';
 import PlaceHotels from '@/sections/Place/details/hotels';
 import PlaceRestos from '@/sections/Place/details/Resto';
+import MyComponent from '@/components/Place/details/avisPopup';
 const PlaceDetails: NextPage = () => {
 	return (
 		<div className='w-full pb-10 md:pb-24 bg-[#F5F5F5]'>
@@ -18,6 +19,7 @@ const PlaceDetails: NextPage = () => {
 			<PlaceActivities/>
 			<PlaceHotels/>
 			<PlaceRestos/>
+			<MyComponent/>
             
 		</div>
 	);

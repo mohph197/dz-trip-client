@@ -3,15 +3,66 @@ import Image from "next/image";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 import DetailSectionTitle from "@/components/Place/details/DetailSectionTitle";
-
+import { useState, useEffect } from "react";
+import Modal from "react-modal";
 
 const Avis: FunctionComponent = () => {
-    
+
+  const [Avis, setAvis] = useState({});
+  const[MoyenNote, setMoyenNote] = useState(0);
+  
+  
+  const [isOpen, setIsOpen] = useState(false);
+  const customStyles = {
+    overlay: {
+      backgroundColor: "rgba(0, 0, 0, 0.6)",
+    },
+    content: {
+
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+
+    },
+    text :{
+      font:"montserrat-bold"
+    }
+  };
+
+  const [comment, setComment] = useState("");
+  const [stars, setStars] = useState(0);
+
+  // send a comment
+  function sendComment(
+    stars: number,
+    comment: String,
+    idPlace: number,
+    idUser: number
+  ) {
+    console.log(comment);
+  }
+
+  const [close, setClose] = useState(false);
+
+  useEffect(() => {
+    setIsOpen(false);
+    console.log(" closing")
+    if (close == true) {
+      setIsOpen(false);
+      setClose(false);
+    }
+
+  },[close]);
+
+  function closePopup() {
+    setIsOpen(false);
+  }
+
   return (
-    <PageSection
-      name=" Avis et commentaires"
-      className=""
-    >
+    <PageSection name=" Avis et commentaires" className="">
       <div className="bg-white flex flex-col gap-4 pt-8 justify-between w-full ">
         <div className=" items-start left px-32 py-8">
           <DetailSectionTitle title="Avis et commentaires " />
@@ -120,7 +171,146 @@ const Avis: FunctionComponent = () => {
             <button
               className=" h-[70px] relative w-2/3 bg-[#2FAACC] rounded-lg place-content-center my-6 "
               style={{ filter: "drop-shadow(0px 4px 4px rgba(0,0,0,0.25))" }}
+              onClick={() => setIsOpen(true)}
             >
+              <Modal
+                id="popup"
+                isOpen={isOpen}
+                onRequestClose={() => setIsOpen(false)}
+                style={customStyles}
+              >
+                <div className="w-full  h-100 flex gap-8 justify-between">
+                  <div className="w-2/3">
+                    <Image
+                      src="/assets/images/avis.png"
+                      alt="donner votre avis"
+                      width={0}
+                      height={0}
+                      sizes="100vw"
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                      }}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-4 justify-center">
+                    <div>
+                      <h3 className="font-medium font-[montserrat] ">
+                        
+                        Quelle note donneriez-vous à votre expérience ?
+                      </h3>
+                    </div>
+                    <div className="flex gap-2  items-center  ">
+                      <p className=" text-[#E94847] pt-2"> Horrible</p>
+                      <div className="flex justify-start gap-4 items-end relative space-x-[-9px]">
+                        <svg
+                          width={30}
+                          height={30}
+                          viewBox="0 0 41 41"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="flex-grow-0 flex-shrink-0"
+                          preserveAspectRatio="xMidYMid meet"
+                        >
+                          <path
+                            d="M22.4329 3.154L24.9725 11.587C25.4721 13.246 26.9999 14.3815 28.7325 14.3815H37.3966C39.2276 14.3815 40.0263 16.6952 38.5853 17.8248L31.2029 23.6119C29.9299 24.6097 29.399 26.286 29.8654 27.8347L32.5936 36.8939C33.136 38.6952 31.0404 40.1266 29.5599 38.966L23.0105 33.832C21.5879 32.7168 19.5879 32.7168 18.1653 33.832L11.6159 38.966C10.1354 40.1266 8.03973 38.6952 8.58219 36.8939L11.3104 27.8347C11.7767 26.286 11.2458 24.6097 9.97292 23.6119L2.59043 17.8248C1.14944 16.6952 1.9482 14.3815 3.77916 14.3815H12.4433C14.1759 14.3815 15.7037 13.246 16.2033 11.587L18.7429 3.154C19.2935 1.32571 21.8823 1.32571 22.4329 3.154Z"
+                            stroke="#959595"
+                            stroke-width={2}
+                          />
+                        </svg>
+                        <svg
+                          width={35}
+                          height={35}
+                          viewBox="0 0 47 46"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="flex-grow-0 flex-shrink-0"
+                          preserveAspectRatio="xMidYMid meet"
+                        >
+                          <path
+                            d="M25.019 2.41542L28.3228 13.2615C28.8264 14.9145 30.3513 16.0441 32.0793 16.0441H43.1528C44.9891 16.0441 45.7846 18.369 44.3331 19.4939L35.0563 26.6832C33.768 27.6817 33.2304 29.3722 33.7053 30.9314L37.171 42.3087C37.7185 44.1061 35.6326 45.5441 34.1475 44.3932L25.5812 37.7545C24.1653 36.6572 22.1863 36.6572 20.7704 37.7545L12.2041 44.3932C10.719 45.5441 8.63309 44.1061 9.18058 42.3087L12.6463 30.9314C13.1212 29.3722 12.5836 27.6817 11.2953 26.6832L2.01846 19.4939C0.566979 18.369 1.36242 16.0441 3.19876 16.0441H14.2723C16.0003 16.0441 17.5252 14.9145 18.0287 13.2615L21.3326 2.41541C21.8871 0.594929 24.4644 0.594926 25.019 2.41542Z"
+                            stroke="#959595"
+                            stroke-width={2}
+                          />
+                        </svg>
+                        <svg
+                          width={40}
+                          height={40}
+                          viewBox="0 0 52 52"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="flex-grow-0 flex-shrink-0"
+                          preserveAspectRatio="xMidYMid meet"
+                        >
+                          <path
+                            d="M27.5205 2.50873L31.3871 15.3245C31.8874 16.9825 33.4147 18.117 35.1466 18.117L48.0948 18.117C49.9266 18.117 50.7248 20.4326 49.2821 21.5614L38.4427 30.0425C37.1672 31.0404 36.6353 32.719 37.103 34.2694L41.1539 47.6958C41.6972 49.4965 39.6032 50.9289 38.1219 49.7699L28.0956 41.925C26.6741 40.8128 24.6775 40.8128 23.256 41.925L13.2297 49.7699C11.7484 50.9289 9.65436 49.4965 10.1976 47.6958L14.2485 34.2694C14.7163 32.719 14.1843 31.0404 12.9089 30.0425L2.06942 21.5614C0.626716 20.4326 1.42494 18.117 3.25677 18.117L16.205 18.117C17.9368 18.117 19.4642 16.9825 19.9644 15.3245L23.8311 2.50873C24.3823 0.681714 26.9692 0.681716 27.5205 2.50873Z"
+                            stroke="#959595"
+                            stroke-width={2}
+                          />
+                        </svg>
+                        <svg
+                          width={35}
+                          height={35}
+                          viewBox="0 0 47 46"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="flex-grow-0 flex-shrink-0"
+                          preserveAspectRatio="xMidYMid meet"
+                        >
+                          <path
+                            d="M25.019 2.41542L28.3228 13.2615C28.8264 14.9145 30.3513 16.0441 32.0793 16.0441H43.1528C44.9891 16.0441 45.7846 18.369 44.3331 19.4939L35.0563 26.6832C33.768 27.6817 33.2304 29.3722 33.7053 30.9314L37.171 42.3087C37.7185 44.1061 35.6326 45.5441 34.1475 44.3932L25.5812 37.7545C24.1653 36.6572 22.1863 36.6572 20.7704 37.7545L12.2041 44.3932C10.719 45.5441 8.63309 44.1061 9.18058 42.3087L12.6463 30.9314C13.1212 29.3722 12.5836 27.6817 11.2953 26.6832L2.01846 19.4939C0.566979 18.369 1.36242 16.0441 3.19876 16.0441H14.2723C16.0003 16.0441 17.5252 14.9145 18.0287 13.2615L21.3326 2.41541C21.8871 0.594929 24.4644 0.594926 25.019 2.41542Z"
+                            stroke="#959595"
+                            stroke-width={2}
+                          />
+                        </svg>
+                        <svg
+                          width={30}
+                          height={30}
+                          viewBox="0 0 40 41"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="flex-grow-0 flex-shrink-0"
+                          preserveAspectRatio="xMidYMid meet"
+                        >
+                          <path
+                            d="M21.6087 3.154L24.1482 11.587C24.6479 13.246 26.1757 14.3815 27.9083 14.3815H36.5724C38.4034 14.3815 39.2021 16.6952 37.7611 17.8248L30.3786 23.6119C29.1057 24.6097 28.5748 26.286 29.0412 27.8347L31.7694 36.8939C32.3118 38.6952 30.2162 40.1266 28.7357 38.966L22.1863 33.832C20.7637 32.7168 18.7636 32.7168 17.3411 33.832L10.7917 38.966C9.31115 40.1266 7.21551 38.6952 7.75797 36.8939L10.4861 27.8347C10.9525 26.286 10.4216 24.6097 9.1487 23.6119L1.76621 17.8248C0.325221 16.6952 1.12398 14.3815 2.95494 14.3815H11.6191C13.3517 14.3815 14.8795 13.246 15.3791 11.587L17.9187 3.154C18.4693 1.32571 21.0581 1.32571 21.6087 3.154Z"
+                            stroke="#959595"
+                            stroke-width={2}
+                          />
+                        </svg>
+                      </div>
+                      <p className=" text-[#60B896] pt-2"> Formidable</p>
+                    </div>
+                    <div>
+                      <h3 className="font-medium "> Ajouter un commentaire </h3>
+                    </div>
+                    <div className=" bg-slate-300 rounded-[18px] h-20">
+                      <input className="h-full w-full stroke-black border rounded-md"></input>
+                    </div>
+                    <div>
+                      <button
+                        className=" h-8 m-auto w-2/3 bg-[#2FAACC] rounded-lg place-content-center text-white font-semibold "
+                        style={{
+                          filter: "drop-shadow(0px 4px 4px rgba(0,0,0,0.25))",
+                        }}
+                        onClick={() => sendComment()}
+                      >
+                        Envoyer
+                      </button>
+                    </div>
+                  </div>
+                  <div>
+                    <button
+                      className="font-sans font-bold font-montserrat "
+                      onClick={() => {
+                        setClose(true);
+                      }}
+                    >
+                      X
+                    </button>
+                  </div>
+                </div>
+              </Modal>
               <div>
                 <p className="text-white font-bold "> Donner votre avis</p>
               </div>
@@ -129,8 +319,8 @@ const Avis: FunctionComponent = () => {
 
           <div className=" w-0.5  bg-[#60B896]"> </div>
           <div className=" w-2/3 no-scrollbar overflow-y-auto  flex flex-col gap-10 h-[496px]">
-            {/* here the comments */ }
-            
+            {/* here the comments */}
+
             <div className=" flex flex-col gap 8 ">
               <div className="flex gap-2">
                 <svg
@@ -198,19 +388,20 @@ const Avis: FunctionComponent = () => {
                 />
               </div>
               <div className=" text-[20px] px-4 font-medium text-[#292D32] opacity-90 pb-6">
-                hey here i the comment 
-
+                hey here i the comment
               </div>
               <div className=" text-[16px] px-4 font-normal text-[#292D32] opacity-80 pb-8">
-              Cet avis est l'opinion subjective d'un membre de DZTrip et non l'avis de DZTrip  . Les avis sont soumis à des vérifications de la part de DZTrip.
+                Cet avis est l'opinion subjective d'un membre de DZTrip et non
+                l'avis de DZTrip . Les avis sont soumis à des vérifications de
+                la part de DZTrip.
               </div>
               <div className="  relative pr-8">
-              <p className="underline absolute bottom-0 right-6"> signaler l'avis</p>
+                <p className="underline absolute bottom-0 right-6">
+                  {" "}
+                  signaler l'avis
+                </p>
               </div>
             </div>
-            
-        
-           
           </div>
         </div>
       </div>
