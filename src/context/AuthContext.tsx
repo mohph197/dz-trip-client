@@ -64,6 +64,7 @@ export const AuthProvider: FunctionComponent<AuthContextProviderProps> = ({
 			let user = getUserInfo();
 			if (user) {
 				setCurrentUser(user);
+				setAuthLoading(false);
 			}
 			user = await getUserByToken();
 			await new Promise((resolve) => {

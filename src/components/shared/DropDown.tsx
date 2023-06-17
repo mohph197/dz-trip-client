@@ -7,9 +7,14 @@ import { useOutClickHandler } from '@/hooks/OutClickHandler';
 type DropDownProps = {
 	title: string;
 	items: string[];
+	width?: string;
 };
 
-const DropDown: FunctionComponent<DropDownProps> = ({ title, items }) => {
+const DropDown: FunctionComponent<DropDownProps> = ({
+	title,
+	items,
+	width,
+}) => {
 	const [categorySelectExpanded, setCategorySelectExpanded] =
 		useState<boolean>(false);
 	const dropDownRef = useRef<HTMLDivElement>(null);
@@ -28,9 +33,9 @@ const DropDown: FunctionComponent<DropDownProps> = ({ title, items }) => {
 			ref={dropDownRef}
 		>
 			<button
-				className={`relative flex items-center py-2 px-4 h-full w-48 bg-white rounded-xl overflow-hidden border ${
+				className={`relative flex items-center py-2 px-4 h-full bg-white rounded-xl overflow-hidden border ${
 					categorySelectExpanded ? 'border-primary' : ''
-				}`}
+				} w-${width ? `[${width}]` : '48'}`}
 				onClick={() => setCategorySelectExpanded(!categorySelectExpanded)}
 			>
 				<div className='outline-none w-full text-start font-medium'>
