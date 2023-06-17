@@ -11,6 +11,11 @@ export default function Document() {
 					crossOrigin='anonymous'
 					referrerPolicy='no-referrer'
 				/>
+				<script
+					src='https://accounts.google.com/gsi/client'
+					async
+					defer
+				></script>
 			</Head>
 			<body>
 				<Main />

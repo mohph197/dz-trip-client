@@ -6,6 +6,7 @@ import { FunctionComponent, useEffect, useRef, useState } from 'react';
 import NavLink from './Header/NavLink';
 import { navLinks } from '@/config/consts';
 import { useRouter } from 'next/router';
+import { useAuthContext } from '@/hooks/AuthContext';
 
 const Header: FunctionComponent = () => {
 	const windowSize = useWindowSize();
@@ -14,6 +15,7 @@ const Header: FunctionComponent = () => {
 	const headerRef = useRef<HTMLElement>(null);
 	const router = useRouter();
 	const [activeLink, setActiveLink] = useState<string>('');
+	const { currentUser } = useAuthContext();
 
 	const updateActiveLink = () => {
 		if (
@@ -98,12 +100,16 @@ const Header: FunctionComponent = () => {
 						/>
 					))}
 				</ul>
-				<Link
-					href='/connection'
-					className='bg-primary py-2 px-6 rounded-xl text-white text-center select-none'
-				>
-					Connexion
-				</Link>
+				{currentUser ? (
+					<h1>{currentUser.name}</h1>
+				) : (
+					<Link
+						href='/connection'
+						className='bg-primary py-2 px-6 rounded-xl text-white text-center select-none'
+					>
+						Connexion
+					</Link>
+				)}
 			</nav>
 		</header>
 	);

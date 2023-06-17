@@ -16,11 +16,11 @@ const UpdateMap = () => {
 	const map = useMap();
 
 	const getLocationsWithinBounds = useCallback(
-		(map: Leaflet.Map) => {
+		async (map: Leaflet.Map) => {
 			const bounds = map.getBounds();
 
 			updateLocations(
-				getLocations({
+				await getLocations({
 					startLat: bounds.getNorth(),
 					endLat: bounds.getSouth(),
 					startLng: bounds.getWest(),
