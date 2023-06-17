@@ -5,12 +5,12 @@ import { FunctionComponent } from "react";
 import DetailSectionTitle from "@/components/Place/details/DetailSectionTitle";
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
+import React from "react";
+import ReactStars from "react-stars";
 
 const Avis: FunctionComponent = () => {
-
   const [Avis, setAvis] = useState({});
-  const[MoyenNote, setMoyenNote] = useState(0);
-  
+  const [MoyenNote, setMoyenNote] = useState(0);
 
   const [isOpen, setIsOpen] = useState(false);
   const customStyles = {
@@ -18,30 +18,23 @@ const Avis: FunctionComponent = () => {
       backgroundColor: "rgba(0, 0, 0, 0.6)",
     },
     content: {
-
       top: "50%",
       left: "50%",
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
       transform: "translate(-50%, -50%)",
-
     },
-    text :{
-      font:"montserrat-bold"
-    }
+    text: {
+      font: "montserrat-bold",
+    },
   };
 
   const [comment, setComment] = useState("");
   const [stars, setStars] = useState(0);
 
   // send a comment
-  function sendComment(
-    stars: number,
-    comment: String,
-    idPlace: number,
-    idUser: number
-  ) {
+  function sendComment() {
     console.log(comment);
   }
 
@@ -49,13 +42,12 @@ const Avis: FunctionComponent = () => {
 
   useEffect(() => {
     setIsOpen(false);
-    console.log(" closing")
+    console.log(" closing");
     if (close == true) {
       setIsOpen(false);
       setClose(false);
     }
-
-  },[close]);
+  }, [close]);
 
   function closePopup() {
     setIsOpen(false);
@@ -196,14 +188,13 @@ const Avis: FunctionComponent = () => {
                   <div className="flex flex-col gap-4 justify-center">
                     <div>
                       <h3 className="font-medium font-[montserrat] ">
-                        
                         Quelle note donneriez-vous à votre expérience ?
                       </h3>
                     </div>
                     <div className="flex gap-2  items-center  ">
                       <p className=" text-[#E94847] pt-2"> Horrible</p>
                       <div className="flex justify-start gap-4 items-end relative space-x-[-9px]">
-                        <svg
+                        {/* <svg
                           width={30}
                           height={30}
                           viewBox="0 0 41 41"
@@ -277,7 +268,15 @@ const Avis: FunctionComponent = () => {
                             stroke="#959595"
                             stroke-width={2}
                           />
-                        </svg>
+                        </svg> */}
+                        <div>
+                          <ReactStars
+                            count={5}
+                            size={30}
+                            color2={"#ffd700"}
+                            edit={true}
+                          />
+                        </div>
                       </div>
                       <p className=" text-[#60B896] pt-2"> Formidable</p>
                     </div>
@@ -285,15 +284,22 @@ const Avis: FunctionComponent = () => {
                       <h3 className="font-medium "> Ajouter un commentaire </h3>
                     </div>
                     <div className=" bg-slate-300 rounded-[18px] h-20">
-                      <input className="h-full w-full stroke-black border rounded-md"></input>
+                      <input
+                        className="h-full w-full stroke-black border rounded-md"
+                        onChange={(e) => setComment(e.target.value)}
+                        placeholder="Ecrivez vos commentaire "
+                        defaultValue={""}
+                      ></input>
                     </div>
                     <div>
-                      <button
+                      <button 
+                       
                         className=" h-8 m-auto w-2/3 bg-[#2FAACC] rounded-lg place-content-center text-white font-semibold "
                         style={{
                           filter: "drop-shadow(0px 4px 4px rgba(0,0,0,0.25))",
                         }}
-                        //onClick={() => sendComment()}
+
+                        onClick={() => sendComment()}
                       >
                         Envoyer
                       </button>

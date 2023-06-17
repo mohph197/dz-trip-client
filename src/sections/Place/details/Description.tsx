@@ -17,12 +17,11 @@ const PlaceDescription: FunctionComponent = () => {
     lon:number;
    
 };
-  
   const [lieu, setLieu] = useState<Lieu>();
   const[lat,setLat]=useState(0);
   const[long,setLong]=useState(0);
   const[type,setType]=useState();
-  const[hAcces,setHAcces]=useState();
+  
   const[ouvert,setOuvert]=useState();
   let [idLieu ,setIdLieu]=useState<number>();
 
