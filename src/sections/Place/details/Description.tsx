@@ -3,7 +3,7 @@ import PageSection from "@/components/shared/PageSection";
 import Image from "next/image";
 import Link from "next/link";
 import { FunctionComponent } from "react";
-import { useEffect,useState } from "react";
+import { useEffect,useState} from "react";
 
 const PlaceDescription: FunctionComponent = () => {
 // declaration des structures 
@@ -17,18 +17,24 @@ const PlaceDescription: FunctionComponent = () => {
     lon:number;
    
 };
-
-  const [lieu, setLieu] = useState<Lieu>({});
+  
+  const [lieu, setLieu] = useState<Lieu>();
+  const[lat,setLat]=useState(0);
+  const[long,setLong]=useState(0);
+  const[type,setType]=useState();
+  const[hAcces,setHAcces]=useState();
+  const[ouvert,setOuvert]=useState();
+  let [idLieu ,setIdLieu]=useState<number>();
 
   function chargerMap() {
     const iFrameData = document.getElementById("map") as HTMLIFrameElement;
     console.log("getting iframe",iFrameData);
     // const lat = lieu.lat;
-    const lat = 4; 
-    const lon = lieu.lon;
+    const lat = long; 
+    const lon = lat;
     if(iFrameData!=null ){
     iFrameData.src = `https://maps.google.com/maps?q=${lat},${lon}&hl=es&z=20&amp;&output=embed `;
-    // iFrameData.src=`https://maps.google.com/maps?q=35.856737, 10.606619&z=15&output=embed" width="360" height="270" frameborder="0" style="border:0`;
+    
     console.log(iFrameData.src);
     }
   }
@@ -36,10 +42,18 @@ const PlaceDescription: FunctionComponent = () => {
   // charger la localisation du lieu
   useEffect(() => {
     chargerMap();
-  },[]);
+  },[lieu]);
 
-  
+   // recuperer les photos du Lieu
+   const [photos, setPhotos] = useState([]);
+   function getPhotos(idLieu:number) {
+    //  API.get(`/photos/${idLieu}`).then((res:any) => {
+    //    console.log(res.data);
+    //    setPhotos(res.data);
+    //  });
+   };
 
+     // recupere les chemps ( clés etrangères ) externe en texte
 
 
   return (
