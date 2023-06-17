@@ -87,3 +87,11 @@ export const wilayas = [
 	'Oran',
 	'Blida'
 ]
+export const moyensDeTransport =[
+	'Train',
+	'Bus',
+	'Taxi',
+	'Tram',
+	'Avion',
+	'Bateau'
+]
