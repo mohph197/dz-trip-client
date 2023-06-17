@@ -2,7 +2,7 @@ import { getAccessToken } from '@/services/token.service';
 import Axios from 'axios';
 
 const axios = Axios.create({
-	baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+	baseURL: process.env.NEXT_PUBLIC_GATEWAY_URL,
 });
 
 axios.interceptors.request.use((config) => {
