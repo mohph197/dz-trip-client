@@ -1,7 +1,7 @@
 import OperationsLayout from "@/components/shared/OperationsLayout";
 import { NextPage } from "next";
 import SidebarAdmin from "@/components/shared/SidebarAdmin";
-import LocBox from "@/components/locationAdmin/LocBox"
+import LocBox from "@/components/Admin/Location/LocBox"
 import Image from "next/image";
 
 
