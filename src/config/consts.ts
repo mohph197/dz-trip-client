@@ -69,15 +69,12 @@ export const operationsNavLinks = [
 		id: 'events',
 		url: '/events',
 	},
-]
+];
 
-export const searchCategories = [
-	'This is',
-	'A Test',
-	'Nothing',
-	'Serious'
-]
+export const searchCategories = ['This is', 'A Test', 'Nothing', 'Serious'];
 
 export const footerRoutes = [];
 
 export const searchRoutes = ['/main', '/explore', '/events'];
+
+export const unprotectedRoutes = ['/connection', '/'];

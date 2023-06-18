@@ -101,7 +101,16 @@ const Header: FunctionComponent = () => {
 					))}
 				</ul>
 				{currentUser ? (
-					<h1>{currentUser.name}</h1>
+					<div>
+						<Image
+							src={currentUser.picture}
+							alt='profile pic'
+							width={100}
+							height={100}
+							className='object-cover'
+						/>
+						<h1>{currentUser.name}</h1>
+					</div>
 				) : (
 					<Link
 						href='/connection'

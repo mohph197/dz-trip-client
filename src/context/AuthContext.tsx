@@ -1,3 +1,4 @@
+import { unprotectedRoutes } from '@/config/consts';
 import { removeAccessToken } from '@/services/token.service';
 import {
 	getUserByToken,
@@ -96,7 +97,7 @@ export const AuthProvider: FunctionComponent<AuthContextProviderProps> = ({
 				if (route === '/connection') {
 					await replace(redirectRoute);
 				}
-			} else if (route !== '/connection') {
+			} else if (!unprotectedRoutes.includes(route)) {
 				updateRedirectRoute();
 				await replace('/connection');
 			}
