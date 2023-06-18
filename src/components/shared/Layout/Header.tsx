@@ -7,6 +7,7 @@ import NavLink from './Header/NavLink';
 import { navLinks } from '@/config/consts';
 import { useRouter } from 'next/router';
 import { useAuthContext } from '@/hooks/AuthContext';
+import AccountMenu from './Header/AccountMenu';
 
 const Header: FunctionComponent = () => {
 	const windowSize = useWindowSize();
@@ -101,16 +102,7 @@ const Header: FunctionComponent = () => {
 					))}
 				</ul>
 				{currentUser ? (
-					<div>
-						<Image
-							src={currentUser.picture}
-							alt='profile pic'
-							width={100}
-							height={100}
-							className='object-cover'
-						/>
-						<h1>{currentUser.name}</h1>
-					</div>
+					<AccountMenu currentUser={currentUser} />
 				) : (
 					<Link
 						href='/connection'

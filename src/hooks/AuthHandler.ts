@@ -10,7 +10,6 @@ export const useAuthHandler = () => {
 	const { updateCurrentUser } = useAuthContext();
 
 	const handleCredentialsResponse = async (response: any) => {
-		console.log(response.credential);
 		setLoading(true);
 		try {
 			updateAccessToken(response.credential);

@@ -14,8 +14,6 @@ const GoogleButton = dynamic(
 );
 
 const Connection: NextPage = () => {
-	useEffect(() => console.log('Access to connection'), []);
-
 	return (
 		<PageSection name='connection' className='h-[max(100vh,24rem)]'>
 			<div className='relative h-full w-full flex flex-col justify-center items-center isolate'>

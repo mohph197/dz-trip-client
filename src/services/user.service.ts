@@ -8,7 +8,6 @@ export const getUserByToken = async (): Promise<UserType | null> => {
 	const token = getAccessToken();
 	if (!token) return null;
 	try {
-		console.log('Launching backend request!');
 		const res = await postCredentials(token);
 		const user = res.data;
 		return user;

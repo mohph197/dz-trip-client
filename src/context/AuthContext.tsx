@@ -61,8 +61,6 @@ export const AuthProvider: FunctionComponent<AuthContextProviderProps> = ({
 	};
 
 	useEffect(() => {
-		console.log('Handle Auth Effect Called!');
-
 		const handleAuth = async () => {
 			setAuthLoading(true);
 			let user: UserType | null = getUserInfo();
@@ -88,8 +86,6 @@ export const AuthProvider: FunctionComponent<AuthContextProviderProps> = ({
 	};
 
 	useEffect(() => {
-		console.log('User and route changes called!');
-
 		const updateRedirectRoute = () => setRedirectRoute(route);
 
 		const updateRoute = async () => {
