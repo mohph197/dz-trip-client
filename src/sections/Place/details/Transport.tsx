@@ -6,7 +6,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 
-const PlaceTransport: FunctionComponent = () => {
+type PlaceProps = {
+	lieu: any;
+};
+
+const PlaceTransport: FunctionComponent<PlaceProps> = ({lieu}) => {
   return (
     <PageSection name="PLaceTransport" className=" m-10   ">
       <div className="flex flex-col justify-between gap-8">

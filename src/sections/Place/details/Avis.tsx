@@ -7,12 +7,30 @@ import { useState, useEffect } from "react";
 import Modal from "react-modal";
 import React from "react";
 import ReactStars from "react-stars";
+import axios from '@/config/axios';
 
-const Avis: FunctionComponent = () => {
-  const [Avis, setAvis] = useState({});
+type PlaceProps = {
+	lieu: any;
+};
+
+const Avis: FunctionComponent<PlaceProps> = ({lieu}) => {
+  const [Avis, setAvis] = useState([]);
   const [MoyenNote, setMoyenNote] = useState(0);
 
   const [isOpen, setIsOpen] = useState(false);
+
+  function getAvis(){
+		axios.get(`/avis/${lieu.id}`).then((res:any) => {
+		  setAvis(res.data);
+		});
+	  };
+
+  useEffect(() => {
+		getAvis();
+	  },[]);
+  
+
+
   const customStyles = {
     overlay: {
       backgroundColor: "rgba(0, 0, 0, 0.6)",
@@ -326,7 +344,8 @@ const Avis: FunctionComponent = () => {
           <div className=" w-0.5  bg-[#60B896]"> </div>
           <div className=" w-2/3 no-scrollbar overflow-y-auto  flex flex-col gap-10 h-[496px]">
             {/* here the comments */}
-
+            <>
+            {Avis.map((avis) => (
             <div className=" flex flex-col gap 8 ">
               <div className="flex gap-2">
                 <svg
@@ -407,7 +426,8 @@ const Avis: FunctionComponent = () => {
                   signaler l'avis
                 </p>
               </div>
-            </div>
+            </div>))}
+            </>
           </div>
         </div>
       </div>

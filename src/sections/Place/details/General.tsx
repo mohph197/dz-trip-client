@@ -3,15 +3,34 @@ import Image from "next/image";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 import DetailSectionTitle from "@/components/Place/details/DetailSectionTitle";
+import { useState , useEffect} from "react";
 
-const GeneralPhotos: FunctionComponent = () => {
+import axios from "@/config/axios";
+
+type PlaceProps = {
+  lieu: any;
+};
+
+const GeneralPhotos: FunctionComponent<PlaceProps> = ({ lieu }) => {
+  console.log("lieu general ", lieu ) ; 
+ 
+  const [nbAct, setNbAct]=useState ([]);
+  function getNbLieu(){
+		axios.get(`/evenements/lieu/${lieu.id}`).then((res:any) => {
+		  setNbAct(res.data);
+		});
+	  };
+  useEffect(() => {
+		getNbLieu();
+	  },[]);
+
   return (
     <PageSection
       name="generalPhotos"
       className="h-[max(100vh,768px)] md:h-resizable"
     >
       <div className="relative h-full w-full px-8 inset-x-0 sm:px-14 md:px-20 flex flex-col  mx-1 ">
-        <DetailSectionTitle title="Nom lieu" />
+        <DetailSectionTitle title={`${lieu.nom}`} />
         <div className="flex flex-row justify-between  w-full items-center gap-2 my-2">
           <div className="flex  justify-between gap-5 items-center ">
             <div className="flex justify-start items-center flex-grow-0 flex-shrink-0  relative gap-[5px]">
@@ -34,7 +53,7 @@ const GeneralPhotos: FunctionComponent = () => {
                 />
               </svg>
               <p className="flex-grow-0 flex-shrink-0  h-auto text-[16px] text-left text-[#878484]">
-                Site Historique
+                {lieu.categorieNom}
               </p>
             </div>
             <div className="flex justify-start items-center flex-grow-0 flex-shrink-0  relative gap-[5px] pl-[0.00010267415927955881px] pr-[0.0000858306884765625px]">
@@ -72,7 +91,7 @@ const GeneralPhotos: FunctionComponent = () => {
                   />
                 </svg>
                 <p className="flex-grow-0 flex-shrink-0  h-[24.09px] opacity-60 text-[16px] text-left text-black">
-                  Alger , Adresse exacte{" "}
+                  {lieu.adresse}
                 </p>
               </div>
             </div>
@@ -101,7 +120,7 @@ const GeneralPhotos: FunctionComponent = () => {
                 </span>
                 <span className="flex-grow-0 flex-shrink-0 text-[16px] text-left text-black">
                   {" "}
-                  De 10:00 à 18:00
+                  De 8:00 à 18:00
                 </span>
               </p>
             </div>
@@ -129,19 +148,15 @@ const GeneralPhotos: FunctionComponent = () => {
               </p>
             </div>
           </div>
-          
-            <div className=" relative px-[20px] py-[4.434779167175293px] rounded-[23.65px] bg-[#60b896] left-0 ">
-              <p className="   flex-shrink-0  text-[16px] text-left text-black left-0">
-                360 °
-              </p>
-            </div>
-         
-          
+          <div className=" relative px-[20px] py-[4.434779167175293px] rounded-[23.65px] bg-[#60b896] left-0 ">
+            <p className="   flex-shrink-0  text-[16px] text-left text-black left-0">
+              360 °
+            </p>
+          </div>
         </div>
         <div className="flex row justify-between gap-6 my-2 relative h-full w-full py-1 ">
-            
           <Image
-            src="/assets/images/Rectangle_7.png"
+            src={lieu.chemin}
             alt="photo du lieux"
             width={0}
             height={0}
@@ -196,7 +211,6 @@ const GeneralPhotos: FunctionComponent = () => {
                   height: "100%",
                   width: "100%",
                   opacity: "0.5",
-                  
                 }}
               />
               <div className=" z-20 absolute text-[20]  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -271,7 +285,7 @@ const GeneralPhotos: FunctionComponent = () => {
         </div>
       </div>
     </PageSection>
-  )
-}
+  );
+};
 
 export default GeneralPhotos;

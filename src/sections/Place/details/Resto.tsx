@@ -5,7 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 
-const PlaceRestos: FunctionComponent = () => {
+type PlaceProps = {
+	lieu: any;
+};
+
+const PlaceRestos: FunctionComponent<PlaceProps> = ({lieu}) => {
   return (
     <PageSection
       name="PLaceRestos"

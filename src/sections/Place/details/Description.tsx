@@ -6,37 +6,20 @@ import { FunctionComponent } from "react";
 import { useEffect,useState} from "react";
 import axios from '@/config/axios';
 
-const PlaceDescription: FunctionComponent = () => {
+type PlaceProps = {
+	lieu: any;
+};
+
+const PlaceDescription: FunctionComponent<PlaceProps> = ( {lieu}) => {
 // declaration des structures 
   // chrger les coordonnée du map  google map
 
-  type Lieu = {
-	idLieux: number;
-	// other properties
-    description:String; 
-    lat:number;
-    lon:number;
-   
-};
-  const [lieu, setLieu] = useState<any>({});
+  console.log(" lieu ",lieu);
   const[lat,setLat]=useState(0);
   const[long,setLong]=useState(0);
   const[type,setType]=useState("Type");
   const[ouvert,setOuvert]=useState(false)
   let [idLieu ,setIdLieu]=useState<number>(1);
-
-  function getLieu(){
-    axios.get(`/lieux/${idLieu}`).then((res:any) => {
-      setLieu(res.data);
-      console.log(res.data);
-      
-    });
-  };
-
-  // get lieuc 
-  useEffect(() => {
-    getLieu();
-  },[]);
 
   function chargerMap() {
     const iFrameData = document.getElementById("map") as HTMLIFrameElement;
@@ -50,12 +33,13 @@ const PlaceDescription: FunctionComponent = () => {
     console.log(iFrameData.src);
     }
   }
+  
 
   // charger la localisation du lieu
   useEffect(() => {
     if(lieu!=null){
-    setLat(lieu.locationId.split('_')[0] );
-    setLong(lieu.locationId.split('_')[1] );
+    // setLat(lieu.locationId.split('_')[0] );
+    // setLong(lieu.locationId.split('_')[1] );
     chargerMap();
     }
   },[lieu]);

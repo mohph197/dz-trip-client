@@ -4,7 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { FunctionComponent } from "react";
 import PostBox from "@/components/shared/PostBox";
-const PlaceActivities: FunctionComponent = () => {
+type PlaceProps = {
+	lieu: any;
+};
+
+const PlaceActivities: FunctionComponent<PlaceProps> = ({lieu}) => {
   return (
     <PageSection
       name="PLaceActivities"
